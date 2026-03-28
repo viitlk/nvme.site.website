@@ -1,14 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="index.css">
-        <title>NVMe Site</title>
+        <title>nvme</title>
+        <style>
+            body {
+                display: flex;
+                margin: 0;
+                padding: 0;
+                height: 100vh;
+                width: 100vw;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('horse.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                color: white;
+                font-family: monospace;
+                font-size: 20px;
+                text-align: center;
+            }
+
+            #horse {
+                width: 250px;
+                margin-bottom: 20px;
+                border-radius: 4px;
+                filter: grayscale(0.5);
+            }
+
+            h1 {
+                margin: 0 0 10px 0;
+                letter-spacing: 2px;
+            }
+
+            p {
+                width: 80vw;
+                max-width: 800px;
+                line-height: 1.6;
+                margin: 10px 0;
+            }
+
+            #hidden-text {
+                color: #ff4d4d;
+                font-weight: bold;
+                text-shadow: 0 0 8px rgba(255, 121, 121, 0.5);
+            }
+
+            .btn {
+                margin-top: 20px;
+                font-size: 1.1em;
+                color: #6060ff;
+                text-decoration: none;
+                transition: all 0.1s;
+            }
+
+            .btn:hover {
+                color: white;
+                cursor: pointer;
+            }
+        </style>
     </head>
     <body>
-        <div id="main">
-            <h1>Hello!</h1>
-            <input type="button" value="Contact Us" onclick="window.location.href = `mailto:support@nvme.site`">
-        </div>
+        <img src="horse.jpg" id="horse" alt="horse">
+        <h1>Hello!</h1>
+        <p>i'm <span id="hidden-text">********</span>, and i like coding. i prefer to code on C++, python, lua, or maybe something else. most of my projects are just unfinished, and probably will be never finished</p>
+        <a class="btn" href="mailto:support@nvme.site">[ Contact Me ]</a>
+        <a class="btn" onclick="alert('shhhh...')">[ Who am i? ]</a>
+
+        <script>
+            function makeid(length) {
+                let result = '';
+                const characters = '!@#$%^&*()_+`~\"';:/?.,<>|\[]{}';
+                for (let i = 0; i < length; i++) {
+                    result += characters.charAt(Math.floor(Math.random() * characters.length));
+                }
+                return result;
+            }
+
+            const hidtext = document.getElementById("hidden-text");
+            setInterval(() => {
+                hidtext.innerText = makeid(8);
+            }, 100);
+        </script>
     </body>
 </html>
