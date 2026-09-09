@@ -1,87 +1,1101 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>nvme</title>
-        <style>
-            body {
-                display: flex;
-                margin: 0;
-                padding: 0;
-                height: 100vh;
-                width: 100vw;
-                flex-direction: column;
-                align-items: center;
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>NVMe Projects</title>
+    <link rel="icon" type="image/x-icon" href="https://cdn.nvme.site/nvme.ico">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@100..1000&display=swap');
+
+        :root {
+            color-scheme: dark;
+            --bg: #0a080f;
+            --surface: #1c1b1e;
+            --surface-raised: #252428;
+            --control-soft: rgba(255, 255, 255, 0.06);
+            --outline: #323033;
+            --primary: #d0bcff;
+            --primary-ink: #381e72;
+            --tertiary: #efb8c7;
+            --tertiary-ink: #4a2532;
+            --accent-blue: #a8c7fa;
+            --accent-green: #9bd5c1;
+            --accent-yellow: #f5d98a;
+            --text: #fffbff;
+            --text-soft: #cac4cf;
+            --text-muted: #afa9b4;
+            --radius-card: 24px;
+            --radius-btn: 999px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html, body {
+            min-height: 100vh;
+            width: 100%;
+            color: var(--text);
+            font-family: "Google Sans Flex", system-ui, sans-serif;
+            font-variation-settings: "ROND" 0, "GRAD" 0;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .hero-glow {
+            position: fixed;
+            z-index: 0;
+            inset: 0;
+            background-color: var(--bg);
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(140px);
+            will-change: transform, opacity;
+            mix-blend-mode: screen;
+        }
+
+        .glow-1 {
+            top: -15%;
+            left: 10%;
+            width: 65vw;
+            height: 65vw;
+            background: radial-gradient(circle, rgba(130, 90, 220, 0.8) 0%, transparent 70%);
+            animation: orbit-1 22s ease-in-out infinite;
+        }
+
+        .glow-2 {
+            bottom: -20%;
+            right: -10%;
+            width: 70vw;
+            height: 70vw;
+            background: radial-gradient(circle, rgba(255, 120, 180, 0.6) 0%, transparent 70%);
+            animation: orbit-2 28s ease-in-out infinite;
+        }
+
+        .glow-3 {
+            top: 30%;
+            left: -15%;
+            width: 55vw;
+            height: 55vw;
+            background: radial-gradient(circle, rgba(80, 160, 255, 0.55) 0%, transparent 70%);
+            animation: orbit-3 19s ease-in-out infinite;
+        }
+
+        .glow-4 {
+            top: 10%;
+            right: 20%;
+            width: 45vw;
+            height: 45vw;
+            background: radial-gradient(circle, rgba(80, 220, 180, 0.5) 0%, transparent 70%);
+            animation: orbit-4 25s ease-in-out infinite;
+        }
+
+        .glow-5 {
+            bottom: 10%;
+            left: 30%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(255, 200, 80, 0.45) 0%, transparent 70%);
+            animation: orbit-5 23s ease-in-out infinite;
+        }
+
+        .glow-6 {
+            top: 55%;
+            right: -5%;
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, rgba(180, 130, 255, 0.6) 0%, transparent 70%);
+            animation: orbit-6 27s ease-in-out infinite;
+        }
+
+        .glow-7 {
+            top: -5%;
+            left: 50%;
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, rgba(255, 100, 150, 0.5) 0%, transparent 70%);
+            animation: orbit-7 20s ease-in-out infinite;
+        }
+
+        .glow-8 {
+            bottom: 30%;
+            left: -5%;
+            width: 48vw;
+            height: 48vw;
+            background: radial-gradient(circle, rgba(120, 100, 240, 0.55) 0%, transparent 70%);
+            animation: orbit-8 24s ease-in-out infinite;
+        }
+
+        .glow-9 {
+            top: 70%;
+            left: 60%;
+            width: 42vw;
+            height: 42vw;
+            background: radial-gradient(circle, rgba(255, 150, 220, 0.45) 0%, transparent 70%);
+            animation: orbit-9 26s ease-in-out infinite;
+        }
+
+        @keyframes orbit-1 {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+            33% { transform: translate(80px, -60px) scale(1.25); opacity: 1; }
+            66% { transform: translate(-40px, 70px) scale(0.85); opacity: 0.7; }
+        }
+
+        @keyframes orbit-2 {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+            50% { transform: translate(-100px, -40px) scale(1.3); opacity: 0.95; }
+        }
+
+        @keyframes orbit-3 {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.45; }
+            25% { transform: translate(60px, 40px) scale(1.15); opacity: 0.9; }
+            75% { transform: translate(-70px, -30px) scale(0.9); opacity: 0.6; }
+        }
+
+        @keyframes orbit-4 {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+            40% { transform: translate(-80px, 70px) scale(1.25); opacity: 0.95; }
+            80% { transform: translate(40px, -60px) scale(0.85); opacity: 0.55; }
+        }
+
+        @keyframes orbit-5 {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+            50% { transform: translate(90px, 45px) scale(1.2); opacity: 0.85; }
+        }
+
+        @keyframes orbit-6 {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.55; }
+            30% { transform: translate(-60px, -70px) scale(1.15); opacity: 1; }
+            70% { transform: translate(70px, 60px) scale(0.9); opacity: 0.65; }
+        }
+
+        @keyframes orbit-7 {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.45; }
+            50% { transform: translate(80px, -60px) scale(1.3); opacity: 0.9; }
+        }
+
+        @keyframes orbit-8 {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+            40% { transform: translate(60px, -50px) scale(1.2); opacity: 0.9; }
+            75% { transform: translate(-40px, 70px) scale(0.9); opacity: 0.6; }
+        }
+
+        @keyframes orbit-9 {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+            50% { transform: translate(-70px, -50px) scale(1.25); opacity: 0.85; }
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 74px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            z-index: 100;
+            background: linear-gradient(180deg, rgba(10, 8, 15, 0.85) 0%, rgba(10, 8, 15, 0.4) 70%, transparent 100%);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .wordmark {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+            font-size: 22px;
+            font-weight: 720;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+            flex-shrink: 0;
+        }
+
+        .wordmark img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+        }
+
+        .nav-tabs {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px;
+            background: rgba(28, 27, 30, 0.5);
+            border: 1px solid var(--outline);
+            border-radius: var(--radius-btn);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .nav-tab {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            height: 36px;
+            border-radius: var(--radius-btn);
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 560;
+            letter-spacing: -0.02em;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-family: inherit;
+        }
+
+        .nav-tab:hover {
+            color: var(--text);
+            background: var(--control-soft);
+        }
+
+        .nav-tab.active {
+            background: var(--primary);
+            color: var(--primary-ink);
+        }
+
+        .nav-tab .material-symbols-rounded {
+            font-size: 18px;
+        }
+
+        .custom-select-wrapper {
+            position: relative;
+            user-select: none;
+            flex-shrink: 0;
+        }
+
+        .language-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0 16px;
+            height: 40px;
+            border-radius: var(--radius-btn);
+            background: var(--surface);
+            color: var(--text-soft);
+            font-size: 14px;
+            font-weight: 560;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .language-pill:hover {
+            background: var(--control-soft);
+            color: var(--text);
+        }
+
+        .language-pill.active {
+            background: var(--primary);
+            color: var(--primary-ink);
+        }
+
+        .lang-icon-animated {
+            display: inline-block;
+            transform: rotate(25deg);
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .chevron {
+            font-size: 18px;
+            transition: transform 0.2s ease;
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .language-pill.active .chevron {
+            transform: rotate(180deg);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            min-width: 180px;
+            background: rgba(28, 27, 30, 0.96);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--outline);
+            border-radius: 16px;
+            padding: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px) scale(0.98);
+            transform-origin: top right;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 18px 54px rgba(0, 0, 0, 0.28);
+            z-index: 120;
+        }
+
+        .language-dropdown.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            border-radius: 12px;
+            color: var(--text-soft);
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.15s ease, color 0.15s ease;
+        }
+
+        .lang-option:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text);
+        }
+
+        .lang-option.selected {
+            background: rgba(208, 188, 255, 0.12);
+            color: var(--primary);
+        }
+
+        .lang-flag {
+            font-size: 20px;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .lang-name {
+            flex: 1;
+            letter-spacing: -0.01em;
+        }
+
+        .material-symbols-rounded {
+            font-size: 20px;
+            line-height: 1;
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        main {
+            flex: 1;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 24px 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .home-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 24px;
+            padding-top: 40px;
+        }
+
+        .hero-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 32px;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 12px 32px rgba(208, 188, 255, 0.25));
+        }
+
+        h1 {
+            font-size: clamp(36px, 6vw, 56px);
+            font-weight: 720;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            color: var(--text);
+            background: linear-gradient(135deg, #fffbff 0%, #d0bcff 50%, #efb8c7 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .description {
+            font-size: 17px;
+            line-height: 1.6;
+            color: var(--text-muted);
+            max-width: 620px;
+        }
+
+        .projects-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .projects-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .projects-header .icon-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--tertiary) 100%);
+            display: grid;
+            place-items: center;
+            color: var(--primary-ink);
+            flex-shrink: 0;
+        }
+
+        .projects-header .icon-circle .material-symbols-rounded {
+            font-size: 24px;
+        }
+
+        .projects-header h2 {
+            font-size: 28px;
+            font-weight: 720;
+            letter-spacing: -0.02em;
+        }
+
+        .project-card {
+            background: rgba(28, 27, 30, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--outline);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+        }
+
+        .project-card-header {
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border-bottom: 1px solid var(--outline);
+        }
+
+        .project-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: var(--radius-btn);
+            background: rgba(208, 188, 255, 0.15);
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .project-badge .material-symbols-rounded {
+            font-size: 14px;
+        }
+
+        .project-title {
+            font-size: 18px;
+            font-weight: 650;
+            letter-spacing: -0.02em;
+        }
+
+        .video-card {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            padding: 20px 24px;
+            transition: background 0.2s ease;
+        }
+
+        .video-card:hover {
+            background: var(--surface-raised);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            background: #000;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.03);
+        }
+
+        .play-overlay {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.6) 100%);
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .play-overlay .play-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.95);
+            display: grid;
+            place-items: center;
+            color: #0f0d13;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .play-overlay .play-icon .material-symbols-rounded {
+            font-size: 36px;
+            font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 40;
+            margin-left: 4px;
+        }
+
+        .video-card:hover .play-overlay .play-icon {
+            transform: scale(1.1);
+        }
+
+        .video-title {
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .video-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+        }
+
+        .video-meta .material-symbols-rounded {
+            font-size: 16px;
+            color: var(--primary);
+        }
+
+        .meta-separator {
+            color: var(--outline);
+        }
+
+        .contacts-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 24px;
+            padding: 60px 24px;
+            position: relative;
+            min-height: 500px;
+        }
+
+        .fireflies-container {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .firefly {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 240, 180, 1) 0%, rgba(255, 200, 100, 0.6) 40%, transparent 70%);
+            box-shadow: 0 0 8px 2px rgba(255, 230, 150, 0.6), 0 0 16px 4px rgba(255, 200, 100, 0.3);
+            animation: float linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            50% {
+                transform: translate(var(--dx), var(--dy)) scale(1.2);
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(calc(var(--dx) * 2), calc(var(--dy) * 2)) scale(0.8);
+                opacity: 0;
+            }
+        }
+
+        .contacts-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            max-width: 480px;
+        }
+
+        .contacts-icon-wrapper {
+            width: 96px;
+            height: 96px;
+            border-radius: 32px;
+            background: linear-gradient(135deg, #229ED9 0%, #1a7ab5 100%);
+            display: grid;
+            place-items: center;
+            box-shadow: 0 12px 40px rgba(34, 158, 217, 0.4);
+            position: relative;
+        }
+
+        .contacts-icon-wrapper::before {
+            content: "";
+            position: absolute;
+            inset: -4px;
+            border-radius: 36px;
+            background: linear-gradient(135deg, rgba(34, 158, 217, 0.3), transparent);
+            z-index: -1;
+            filter: blur(12px);
+        }
+
+        .contacts-icon-wrapper svg {
+            width: 48px;
+            height: 48px;
+            fill: white;
+        }
+
+        .contacts-title {
+            font-size: 32px;
+            font-weight: 720;
+            letter-spacing: -0.02em;
+        }
+
+        .contacts-desc {
+            font-size: 16px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            height: 56px;
+            padding: 0 28px;
+            border-radius: var(--radius-btn);
+            background: linear-gradient(135deg, #229ED9 0%, #1a7ab5 100%);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            letter-spacing: -0.01em;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 24px rgba(34, 158, 217, 0.3);
+            font-family: inherit;
+        }
+
+        .telegram-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(34, 158, 217, 0.45);
+        }
+
+        .telegram-btn:active {
+            transform: translateY(0);
+        }
+
+        .telegram-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: white;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0 16px;
+                height: auto;
+                min-height: 74px;
+                flex-wrap: wrap;
+                gap: 12px;
+                padding-top: 12px;
+                padding-bottom: 12px;
+            }
+
+            .wordmark {
+                flex: 1;
+            }
+
+            .custom-select-wrapper {
+                flex: 0 0 auto;
+            }
+
+            .nav-tabs {
+                order: 3;
+                width: 100%;
                 justify-content: center;
-                background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('horse.jpg');
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center;
-                color: white;
-                font-family: monospace;
+                overflow-x: auto;
+                scrollbar-width: none;
+            }
+
+            .nav-tabs::-webkit-scrollbar {
+                display: none;
+            }
+
+            .nav-tab {
+                font-size: 13px;
+                padding: 6px 12px;
+                height: 32px;
+            }
+
+            .nav-tab .tab-label {
+                display: none;
+            }
+
+            .nav-tab .material-symbols-rounded {
                 font-size: 20px;
-                text-align: center;
             }
 
-            #horse {
-                width: 250px;
-                margin-bottom: 20px;
-                border-radius: 4px;
-                filter: grayscale(0.5);
+            main {
+                padding: 32px 16px 60px;
             }
 
-            h1 {
-                margin: 0 0 10px 0;
-                letter-spacing: 2px;
+            .hero-img {
+                width: 110px;
+                height: 110px;
             }
 
-            p {
-                width: 80vw;
-                max-width: 800px;
-                line-height: 1.6;
-                margin: 10px 0;
+            .project-card-header {
+                padding: 16px 20px;
             }
 
-            #hidden-text {
-                color: #ff4d4d;
-                font-weight: bold;
-                text-shadow: 0 0 8px rgba(255, 121, 121, 0.5);
+            .video-card {
+                padding: 16px 20px;
             }
 
-            .btn {
-                margin-top: 20px;
-                font-size: 1.1em;
-                color: #6060ff;
-                text-decoration: none;
-                transition: all 0.1s;
+            .contacts-wrapper {
+                padding: 40px 16px;
+                min-height: 400px;
             }
+        }
 
-            .btn:hover {
-                color: white;
-                cursor: pointer;
+        @media (min-width: 769px) {
+            .nav-tab .tab-label {
+                display: inline;
             }
-        </style>
-    </head>
-    <body>
-        <img src="horse.jpg" id="horse" alt="horse">
-        <h1>Hello!</h1>
-        <p>i'm <span id="hidden-text">********</span>, and i like coding. i prefer to code on C++, python, lua, or maybe something else. most of my projects are just unfinished, and probably will be never finished</p>
-        <a class="btn" href="mailto:support@nvme.site">[ Contact Me ]</a>
-        <a class="btn" onclick="alert('shhhh...')">[ Who am i? ]</a>
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-glow">
+        <div class="glow-orb glow-1"></div>
+        <div class="glow-orb glow-2"></div>
+        <div class="glow-orb glow-3"></div>
+        <div class="glow-orb glow-4"></div>
+        <div class="glow-orb glow-5"></div>
+        <div class="glow-orb glow-6"></div>
+        <div class="glow-orb glow-7"></div>
+        <div class="glow-orb glow-8"></div>
+        <div class="glow-orb glow-9"></div>
+    </div>
 
-        <script>
-            function makeid(length) {
-                let result = '';
-                const characters = '!@#$%^&*()_+`~"\';:/?.,<>|\[]{}';
-                for (let i = 0; i < length; i++) {
-                    result += characters.charAt(Math.floor(Math.random() * characters.length));
+    <header>
+        <a href="#" class="wordmark">
+            <img src="https://cdn.nvme.site/nvme.png" alt="NVMe Logo">
+            <span>NVMe</span>
+        </a>
+
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-tab="home">
+                <span class="material-symbols-rounded">home</span>
+                <span class="tab-label" data-i18n="nav_home">Home</span>
+            </button>
+            <button class="nav-tab" data-tab="projects">
+                <span class="material-symbols-rounded">apps</span>
+                <span class="tab-label" data-i18n="nav_projects">My projects</span>
+            </button>
+            <button class="nav-tab" data-tab="contacts">
+                <span class="material-symbols-rounded">contact_mail</span>
+                <span class="tab-label" data-i18n="nav_contacts">Contacts</span>
+            </button>
+        </nav>
+
+        <div class="custom-select-wrapper">
+            <div class="language-pill" id="lang-trigger">
+                <span id="current-lang-text">English</span>
+                <span class="material-symbols-rounded lang-icon-animated">language</span>
+                <span class="material-symbols-rounded chevron">keyboard_arrow_down</span>
+            </div>
+            
+            <div class="language-dropdown" id="lang-dropdown">
+                <div class="lang-option selected" data-value="en">
+                    <span class="lang-flag">🇺🇸</span>
+                    <span class="lang-name">English</span>
+                </div>
+                <div class="lang-option" data-value="ua">
+                    <span class="lang-flag">🇺🇦</span>
+                    <span class="lang-name">Ukrainian</span>
+                </div>
+                <div class="lang-option" data-value="ru">
+                    <span class="lang-flag">🇷🇺</span>
+                    <span class="lang-name">Russian</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="tab-content active" data-content="home">
+            <div class="home-wrapper">
+                <img src="https://cdn.nvme.site/nvme.png" class="hero-img" alt="NVMe">
+                <h1 data-i18n="welcome">Welcome to NVMe website!</h1>
+                <p class="description" data-i18n="welcome_desc">
+                    This website was created for my utility-type projects, programs for the NEDOHAKERS LITE channel, and so on! 
+                    This website will not contain any ads and was created without the use of artificial intelligence.
+                </p>
+            </div>
+        </section>
+
+        <section class="tab-content" data-content="projects">
+            <div class="projects-wrapper">
+                <div class="projects-header">
+                    <div class="icon-circle">
+                        <span class="material-symbols-rounded">apps</span>
+                    </div>
+                    <h2 data-i18n="nav_projects">My projects</h2>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <span class="project-badge">
+                            <span class="material-symbols-rounded">verified</span>
+                            <span data-i18n="project_card_title">NEDOHACKERS LITE</span>
+                        </span>
+                    </div>
+
+                    <a href="https://www.youtube.com/watch?v=3wFbnnxIwLA" target="_blank" rel="noopener" class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://img.youtube.com/vi/3wFbnnxIwLA/maxresdefault.jpg" alt="Video preview" onerror="this.src='https://img.youtube.com/vi/3wFbnnxIwLA/hqdefault.jpg'">
+                            <div class="play-overlay">
+                                <div class="play-icon">
+                                    <span class="material-symbols-rounded">play_arrow</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-title" data-i18n="video_title">Я ПОРЖАЛ С ЭТОЙ WINDOWS 12! разоблачение ПРОГРАММ ПОДПИСЧИКОВ!</div>
+                        <div class="video-meta">
+                            <span class="material-symbols-rounded">schedule</span>
+                            <span data-i18n="video_duration">24 minutes 34 seconds</span>
+                            <span class="meta-separator">•</span>
+                            <span class="material-symbols-rounded">desktop_windows</span>
+                            <span>Windows 12</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="tab-content" data-content="contacts">
+            <div class="contacts-wrapper">
+                <div class="fireflies-container" id="fireflies"></div>
+                <div class="contacts-content">
+                    <div class="contacts-icon-wrapper">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg>
+                    </div>
+                    <h2 class="contacts-title" data-i18n="contact_title">Get in touch</h2>
+                    <p class="contacts-desc" data-i18n="contact_desc">Message me on Telegram</p>
+                    <a href="https://t.me/USBpi" target="_blank" rel="noopener" class="telegram-btn">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg>
+                        <span data-i18n="telegram_btn">Message on Telegram</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const translations = {
+            ru: {
+                nav_home: "Главная",
+                nav_projects: "Мои проекты",
+                nav_contacts: "Контакты",
+                welcome: "Добро пожаловать на сайт NVMe!",
+                welcome_desc: "Этот сайт создан для моих утилит, программ для канала НЕДОХАКЕРЫ ЛАЙТ и многого другого! Здесь нет рекламы, и сайт создан без использования искусственного интеллекта.",
+                project_card_title: "НЕДОХАКЕРЫ ЛАЙТ",
+                video_title: "Я ПОРЖАЛ С ЭТОЙ WINDOWS 12! разоблачение ПРОГРАММ ПОДПИСЧИКОВ!",
+                video_duration: "24 минуты 34 секунды",
+                contact_title: "Свяжитесь со мной",
+                contact_desc: "Напишите мне в Telegram — я всегда на связи и готов обсудить новые идеи.",
+                telegram_btn: "Написать в Telegram"
+            },
+            ua: {
+                nav_home: "Головна",
+                nav_projects: "Мої проєкти",
+                nav_contacts: "Контакти",
+                welcome: "Вітаємо на сайті NVMe!",
+                welcome_desc: "Цей сайт створено для моїх утиліт, програм для каналу НЕДОХАКЕРИ ЛАЙТ тощо! Тут немає реклами, і сайт створено без використання штучного інтелекту.",
+                project_card_title: "НЕДОХАКЕРИ ЛАЙТ",
+                video_title: "Я ПОРЖАЛ С ЭТОЙ WINDOWS 12! разоблачение ПРОГРАММ ПОДПИСЧИКОВ!",
+                video_duration: "24 хвилини 34 секунди",
+                contact_title: "Зв'яжіться зі мною",
+                contact_desc: "Напишіть мені в Telegram — я завжди на зв'язку і готовий обговорити нові ідеї.",
+                telegram_btn: "Написати в Telegram"
+            },
+            en: {
+                nav_home: "Home",
+                nav_projects: "My projects",
+                nav_contacts: "Contacts",
+                welcome: "Welcome to NVMe website!",
+                welcome_desc: "This website was created for my utility-type projects, programs for the NEDOHAKERS LITE channel, and so on! This website will not contain any ads and was created without the use of artificial intelligence.",
+                project_card_title: "NEDOHACKERS LITE",
+                video_title: "Я ПОРЖАЛ С ЭТОЙ WINDOWS 12! разоблачение ПРОГРАММ ПОДПИСЧИКОВ!",
+                video_duration: "24 minutes 34 seconds",
+                contact_title: "Get in touch",
+                contact_desc: "Message me on Telegram — I'm always online and ready to discuss new ideas.",
+                telegram_btn: "Message on Telegram"
+            }
+        };
+
+        const langNames = { en: "English", ua: "Ukrainian", ru: "Russian" };
+
+        function changeLanguage(lang) {
+            localStorage.setItem('lang', lang);
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
                 }
-                return result;
-            }
+            });
+            document.getElementById('current-lang-text').textContent = langNames[lang];
+            document.querySelectorAll('.lang-option').forEach(opt => {
+                opt.classList.toggle('selected', opt.dataset.value === lang);
+            });
+        }
 
-            const hidtext = document.getElementById("hidden-text");
-            setInterval(() => {
-                hidtext.innerText = makeid(8);
-            }, 100);
-        </script>
-    </body>
+        const trigger = document.getElementById('lang-trigger');
+        const dropdown = document.getElementById('lang-dropdown');
+
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdown.classList.toggle('open');
+            trigger.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.lang-option').forEach(option => {
+            option.addEventListener('click', () => {
+                changeLanguage(option.dataset.value);
+                dropdown.classList.remove('open');
+                trigger.classList.remove('active');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!trigger.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.remove('open');
+                trigger.classList.remove('active');
+            }
+        });
+
+        const savedLang = localStorage.getItem('lang') || 'en';
+        changeLanguage(savedLang);
+
+        const navTabs = document.querySelectorAll('.nav-tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        navTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.dataset.tab;
+                navTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                tabContents.forEach(content => {
+                    if (content.dataset.content === target) {
+                        content.classList.add('active');
+                    } else {
+                        content.classList.remove('active');
+                    }
+                });
+                if (target === 'contacts') {
+                    spawnFireflies();
+                }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        const firefliesContainer = document.getElementById('fireflies');
+        let firefliesSpawned = false;
+
+        function spawnFireflies() {
+            if (firefliesSpawned) return;
+            firefliesSpawned = true;
+            const count = 35;
+            for (let i = 0; i < count; i++) {
+                const firefly = document.createElement('div');
+                firefly.className = 'firefly';
+                const size = 3 + Math.random() * 6;
+                firefly.style.width = size + 'px';
+                firefly.style.height = size + 'px';
+                firefly.style.left = Math.random() * 100 + '%';
+                firefly.style.top = Math.random() * 100 + '%';
+                const duration = 8 + Math.random() * 15;
+                firefly.style.animationDuration = duration + 's';
+                firefly.style.animationDelay = -Math.random() * duration + 's';
+                const dx = (Math.random() - 0.5) * 300;
+                const dy = (Math.random() - 0.5) * 300;
+                firefly.style.setProperty('--dx', dx + 'px');
+                firefly.style.setProperty('--dy', dy + 'px');
+                firefliesContainer.appendChild(firefly);
+            }
+        }
+    </script>
+</body>
 </html>
